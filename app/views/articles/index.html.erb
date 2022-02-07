@@ -6,23 +6,27 @@
   </div>
   <div class="row">
     <div class="col">
-      
+      Our blog has <%= Article.public_count %> articles and counting!
     </div>
   </div>
   <div class="row">
     <div class="col">
       <div class="alert alert-danger">Dont check back any time soon</div>
+      <br>
       <h2>Articles <span class="badge rounded-pill bg-warning">Under construction</span></h2>
+      <ul>
+        <% @articles.each do |article| %>
+          <% unless article.archived? %>
+            <li><%= link_to article.title, article %></li>
+          <% end %>
+        <% end %>
+        <li><%= link_to "New Article", new_article_path %></li>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="col">
-      <% @articles.each do |article| %>
-        <li>
-          <a href="/articles/<%= article.id %>">
-            <%= article.title %>
-        </li>
-      <% end %>
+      
     </div>
   </div>
 </div>
