@@ -1,17 +1,13 @@
 <% unless comment.archived? %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= comment.commenter %>
-  </p>
-
-  <p>
-    <strong>Comment:</strong>
-    <%= comment.body %>
-  </p>
-  <p>
-    <%= link_to "Destroy Comment", [comment.article, comment], data: {
+  <div class="card border-secondary w-75">
+    <div class="card-body">
+      <h5 class="card-title"><%= comment.commenter %>
+        <span style="float:right;"></button><button class="btn-close btn-dark btn-sm" type="button"><span style=opacity:0><%= link_to "RAH", [comment.article, comment], data: {
                 turbo_method: :delete,
                 turbo_confirm: "Are you sure?"
-              } %>
-  </p>
+              } %></span></button></span>
+      </h5>
+      <p class="card-text"><%= comment.body %></p>
+    </div>
+  </div>
 <% end %>

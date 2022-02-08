@@ -1,32 +1,51 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h1>Ryan Shaw's Blog</h1>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      Our blog has <%= Article.public_count %> articles and counting!
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div class="alert alert-danger">Dont check back any time soon</div>
-      <br>
-      <h2>Articles <span class="badge rounded-pill bg-warning">Under construction</span></h2>
-      <ul>
-        <% @articles.each do |article| %>
-          <% unless article.archived? %>
-            <li><%= link_to article.title, article %></li>
-          <% end %>
-        <% end %>
-        <li><%= link_to "New Article", new_article_path %></li>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <%= link_to "Webbly", root_path, class: "navbar-brand" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Home", root_path, class: "nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "New Article", new_article_path, class: "nav-link active" %>
+        </li>
       </ul>
     </div>
   </div>
+</nav>
+
+<div class="container">
   <div class="row">
     <div class="col">
-      
+      <h1>Ryan Shaw's Blog</span></h1>
+      <br>
+      <h2>Articles</h2>
+    </div>
+  </div>
+  
+  <div class="row">
+    <% @articles.each do |article| %>
+      <% unless article.archived? %>
+        <div class="col">
+          <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title"><%= article.title %><%= article.comments.public_count%></h5>
+              <p class="card-text"><%= sanitize(article.body[0,100]) %></p>
+              <button class="btn btn-dark" type="button"><%= link_to "Read More", article %></button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+    
+  <div class="row">
+    <div class="col">
+    
     </div>
   </div>
 </div>

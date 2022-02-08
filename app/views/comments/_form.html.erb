@@ -1,18 +1,28 @@
 <%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <div class="card border-secondary w-75">
+    <div class="card-body">
+      <p class="card-title">
+        <%= form.text_field :commenter, :placeholder => "Commenter Name" %>
+        <span style="float:right;"><%= form.submit class: 'btn-dark btn-sm'%></span>
+      </p>
+      <p class="card-text">
+        <%= form.text_area :body, :placeholder => "Comment Body" %>
+      </p>
+      <p>
+        <%= form.label :status %><br>
+        <%= form.select  :status, ['public', 'private', 'archived'], selected: 'public' %>
+      </p>
+    </div>
+  </div>
   <p>
-    <%= form.label :commenter %><br>
-    <%= form.text_field :commenter %>
+    
   </p>
   <p>
-    <%= form.label :body %><br>
-    <%= form.text_area :body %>
+    
   </p>
   <p>
-    <%= form.submit %>
+    
   </p>
+
 <% end %>
-<p>
-  <%= form.label :status %><br>
-  <%= form.select :status, ['public', 'private', 'archived'], selected: 'public' %>
-</p>
 
