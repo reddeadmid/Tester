@@ -32,9 +32,12 @@
         <div class="col">
           <div class="card" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title"><%= article.title %><%= article.comments.public_count%></h5>
+              <h5 class="card-title"><%= article.title %></h5>
               <p class="card-text"><%= sanitize(article.body[0,100]) %></p>
-              <button class="btn btn-dark" type="button"><%= link_to "Read More", article %></button>
+              <p>
+                <button class="btn btn-dark" type="button"><%= link_to "Read More", article %></button>
+                <strong>| <%= article.comments.public_count%> Comments</strong>
+              <p>
             </div>
           </div>
         </div>
